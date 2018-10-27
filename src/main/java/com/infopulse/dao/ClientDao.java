@@ -4,6 +4,7 @@ import com.infopulse.entity.Client;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class ClientDao {
 
@@ -19,6 +20,14 @@ public class ClientDao {
         entityManager.persist(c);
         entityManager.getTransaction().commit();
         entityManager.close();
+    }
+
+    public List<Client> getAll(){
+        EntityManager entityManager =sessionFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        List<Client> clients = entityManager.createQuery("from Client", Client.class).getResultList();
+        entityManager.close();
+        return clients;
     }
 
 }

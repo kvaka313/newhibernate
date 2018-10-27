@@ -24,7 +24,8 @@ public class Client {
     @Basic
     private String name;
 
-    @Column(name = "surename",nullable = false, unique = false, length = 20)
+    @Lob
     @Basic
+    @Column(name = "surename",nullable = false, unique = false, length = 20)
     private String surename;
 }
